@@ -6,7 +6,6 @@ keywords: "jekyll, 配置"
 category: Jekyll
 tags: [Jekyll, Configuration, Usage]
 ---
-{% include JB/setup %}
 
 > 原文地址：[https://github.com/mojombo/jekyll/wiki/configuration](https://github.com/mojombo/jekyll/wiki/configuration)
 
@@ -86,4 +85,3 @@ coderat:
 	caderay_bold_every:10
 	caderay_css:style
 ```
-

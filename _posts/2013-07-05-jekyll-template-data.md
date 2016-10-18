@@ -6,7 +6,6 @@ keywords: "jekyll, 模板"
 category: Jekyll
 tags: [Jekyll, Usage]
 ---
-{% include JB/setup %}
 
 > 原文地址：[https://github.com/mojombo/jekyll/wiki/Template-Data](https://github.com/mojombo/jekyll/wiki/Template-Data)
 
@@ -63,4 +62,3 @@ Jekyll 会遍历你的站点，来寻找需要处理的文件。任何具有 [YA
 |paginator.page|当前页面的数量
 |paginator.previous_page|前面的页面的数量
 |paginator.next_page|后面的页面的数量
-

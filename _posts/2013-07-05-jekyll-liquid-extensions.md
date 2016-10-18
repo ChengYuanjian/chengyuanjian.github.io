@@ -6,7 +6,6 @@ keywords: "jekyll, liquid, 模板"
 category: Jekyll
 tags: [Jekyll, Liquid, Usage]
 ---
-{% include JB/setup %}
 
 > 原文地址:[https://github.com/mojombo/jekyll/wiki/Liquid-Extensions](https://github.com/mojombo/jekyll/wiki/Liquid-Extensions)
 
@@ -170,5 +169,3 @@ end
 [Name of Link]({% post_url 2010-07-21-name-of-post %})
 ```
 {% endraw %}
-
-
