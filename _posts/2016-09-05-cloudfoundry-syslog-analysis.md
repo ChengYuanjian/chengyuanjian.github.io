@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  CloudFoundry日志分析——firehose＋rsyslog＋kafka＋storm
-description: 
+description:
 keywords: CloudFoundry,PaaS,kafka,storm
 category: CloudFoundry
 tags: [CloudFoundry,PaaS]
@@ -17,7 +17,7 @@ tags: [CloudFoundry,PaaS]
 
 ## firehose-to-syslog
 
-### 什么是firehose-to-syslog 
+### 什么是firehose-to-syslog
 
 Firehose是基于websocket的，用来收集事件数据，包括日志、http事件、应用和容器的度量数据等（注意Cloud Foundry系统组件本身的日志是不被包含的）。
 
@@ -155,16 +155,16 @@ __由于rsyslog在8.7.0以后的版本才支持kafka，所以在第一步选择�
 
 ```bash
 
-module(load="imudp") 
+module(load="imudp")
 input(type="imudp" port="514")
 
-module(load="imptcp") 
+module(load="imptcp")
 input(type="imptcp" port="514")
 
 template(name="jtpl"
          type="string"
          string="%hostname%<-+>%syslogtag%<-+>%msg%\n"
-        ) 
+        )
 
 module(load="omkafka")
 
@@ -213,8 +213,7 @@ SpoutConfig spoutConfig = new SpoutConfig(brokerHosts, "topic1", "/zkkafkaspout"
 
 TopologyBuilder builder = new TopologyBuilder();   
 builder.setSpout("spout", new KafkaSpout(spoutConfig));  
-builder.setBolt("bolt", new SenqueceBolt()).shuffleGrouping("spout"); 
-builder.setBolt("kafkabolt", new KafkaBolt<String, Integer>()).shuffleGrouping("bolt"); 
+builder.setBolt("bolt", new SenqueceBolt()).shuffleGrouping("spout");
+builder.setBolt("kafkabolt", new KafkaBolt<String, Integer>()).shuffleGrouping("bolt");
 ```
 更多详情可参考[官方Demo](https://github.com/apache/storm/tree/master/external/storm-kafka)
-

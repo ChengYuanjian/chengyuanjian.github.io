@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:         Apache和Tomcat实现集群和负载均衡
-description: 
+description:
 keywords: Apache, Tomcat
 category: Java
 tags: [Java, Apache, Tomcat]
@@ -15,7 +15,7 @@ _本文资料借鉴于网络_
 
 -----------------
 
-####1.准备工作
+#### 1.准备工作
 
 首先自然是要下载相关软件：
 
@@ -27,15 +27,15 @@ _本文资料借鉴于网络_
 
 * [jk for linux](http://archive.apache.org/dist/tomcat/tomcat-connectors/jk/binaries/linux/jk-1.2.31/i386/)
 
-####2.安装
+#### 2.安装
 
 按照方式比较简单，直接解压即可，然后把JK插件复制到apache/modules目录下。
 
-####3.配置
+#### 3.配置
 
 * （1）修改<apache_home>/conf/httpd.conf文件，在文件后面加上：
 {% highlight sh %}
-LoadModule jk_module modules/mod_jk.so #JK插件的位置 
+LoadModule jk_module modules/mod_jk.so #JK插件的位置
 JkWorkersFile conf/workers.properties #tomcat相关配置文件，见下文
 JkLogFile logs/mod_jk.log #日志文件
 JkLogLevel debug  #tomcat运行模式
@@ -51,12 +51,12 @@ worker.worker1.host=localhost        #Tomcat worker1服务器
 worker.worker1.port=8009            #Tomcat端口
 worker.worker1.type=ajp13            #协议
 worker.worker1.lbfactor=100            #负载平衡因数
- 
+
 worker.worker2.host=localhost        #Tomcat worker2服务器<pre><code>
 worker.worker2.port=8010            #如果是一台机器上端口不能一样，常识
 worker.worker2.type=ajp13            #协议
 worker.worker2.lbfactor=100            #设为一样代表两台机器的负载相同
- 
+
 worker.loadbalancer.type=1b
 worker.loadbalancer.balanced_workers=worker1,worker2
 worker.loadbalancer.sticky_seesion=false
@@ -76,7 +76,7 @@ __说明：__
 在Engine节点启用集群配置，去掉Cluster节点前的注释（默认是注释掉的），并添加jvmRoute属性（与上述workers.properties中配置保持一致）；
 {% highlight xml %}
 <Engine name="Catalina" defaultHost="localhost" jvmRoute="worker1">
-  <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/> 
+  <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
 {% endhighlight %}
 
 要实现session复制，还需要在context.xml添加属性distributable="true"：
@@ -85,6 +85,6 @@ __说明：__
 {% endhighlight %}
 或者在应用程序的web.xml中添加<distributeable/>节点。Tomcat服务器启动这个Web应用时，会为它创建由<Cluster>元素指定的会话管理器。
 
-####4.写在最后
+#### 4.写在最后
 
 通过这种方式配置，如果一个用户A发送请求到worker1，如果中途worker1 down掉了，会转向worker2。如果中途worker3启动了，也有可能请求到worker3，但不管worker1是否重新启动，用户A的请求不会再次到worker1，除非用户重新登陆。

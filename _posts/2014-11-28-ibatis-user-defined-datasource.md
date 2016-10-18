@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:         关于iBatis中自定义数据源
-description: 
+description:
 keywords: Java, iBatis, MyBatis
 category: Java
 tags: [Java,iBatis,MyBatis]
@@ -16,7 +16,7 @@ sqlMapClient.setUserConnection(connection);
 {% endhighlight %}
 可以自定义Connection传给iBatis使用，可以解决这个问题，但在实际使用的过程中，依旧比较麻烦，因为你还得时刻操心Connection的open/close。对此，我一直耿耿于怀，经过一番实践，终于找到另外一种解决方案。
 
-####1.配置iBatis数据源
+#### 1.配置iBatis数据源
 
 {% highlight xml %}
   <transactionManager type="JDBC">
@@ -29,7 +29,7 @@ sqlMapClient.setUserConnection(connection);
 	</transactionManager>
 {% endhighlight %}
 
-####2.构造数据Properties
+#### 2.构造数据Properties
 
 {% highlight java %}
 Properties properties = new Properties();
@@ -39,7 +39,7 @@ properties.setProperty("db.usr","user");
 properties.setProperty("db.pwd","password");//这里可以解密
 {% endhighlight %}
 
-####3.构造SqlMapClient
+#### 3.构造SqlMapClient
 
 {% highlight java %}
   Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");

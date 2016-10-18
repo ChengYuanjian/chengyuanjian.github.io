@@ -9,7 +9,7 @@ tags: [Unix,Linux,Ubuntu]
 
 本文基于Ubuntu12.04，阐述基础环境搭建过程：JDK+Nginx+Tomcat+Redis+PostgreSQL/MySQL。
 
-####JDK安装
+#### JDK安装
 
 * 1.在线安装
 
@@ -35,16 +35,16 @@ Oracle官方网站[下载](http://www.oracle.com/technetwork/java/javase/downloa
 
 接下来就是环境变量配置了。
 {% highlight sh %}
-gedit /etc/profile 
+gedit /etc/profile
 
 #追加以下配置：
 export JAVA_HOME=/usr/lib/jvm/java-7-sun  
 export JRE_HOME=${JAVA_HOME}/jre  
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
-export PATH=${JAVA_HOME}/bin:$PATH 
+export PATH=${JAVA_HOME}/bin:$PATH
 
 #使设置生效
-source /etc/profile 
+source /etc/profile
 {% endhighlight %}
 
 * 3.Open JDK安装
@@ -62,7 +62,7 @@ update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-7-sun/bin/jav
 update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-7-sun/bin/javac 300  
 {% endhighlight %}
 
-####Nginx安装
+#### Nginx安装
 
 * 1.在线安装
 {% highlight sh %}
@@ -85,11 +85,11 @@ make install
 {% endhighlight %}
 安装成功之后，nginx放置在/usr/local/nginx目录下，主要的配置文件为conf目录下的nginx.conf，nginx的启动文件在sbin目录下的nginx文件。
 
-####Tomcat安装
+#### Tomcat安装
 
 因为需要做tomcat集群，故直接在官网下载压缩包：http://tomcat.apache.org/，解压即可。
 
-####Redis安装
+#### Redis安装
 
 * 1.在线安装
 
@@ -110,13 +110,13 @@ apt-get install redis-server
 
 与在线安装方式一基本一样，不赘述。
 
-####PostgreSQL安装
+#### PostgreSQL安装
 
 
 * 1.在线安装
- 
+
 {% highlight sh %}
-apt-get install -y postgresql-9.1 postgresql-client-9.1 postgresql-contrib-9.1 postgresql-server-dev-9.1 
+apt-get install -y postgresql-9.1 postgresql-client-9.1 postgresql-contrib-9.1 postgresql-server-dev-9.1
 {% endhighlight %}
 或者直接
 {% highlight sh %}
@@ -125,7 +125,7 @@ apt-get install postgresql
 
 参见：http://www.postgresql.org/download/linux/ubuntu/
 
-####MySQL安装
+#### MySQL安装
 
 * 1.在线安装
 
@@ -133,5 +133,3 @@ apt-get install postgresql
 apt-get install mysql-server
 {% endhighlight %}
 配置文件路径：/etc/mysql/my.cnf
-
-

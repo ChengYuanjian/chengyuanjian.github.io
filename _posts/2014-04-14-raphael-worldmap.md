@@ -9,34 +9,34 @@ tags: [GWT]
 
 Raphael JS库通过SVG/VML+JS实现跨浏览器的矢量图形实现方案，而Raphael4GWT是Raphael JS的基于GWT的实现方案。本文以世界地图为例进行演示。
 
-###下载Raphael4GWT包
+### 下载Raphael4GWT包
 
 [点击查看](http://code.google.com/p/raphael4gwt/downloads/list)下载列表，本例使用raphael4gwt-0.40.jar。
 
 <!-- more -->
 
-###构造world.js
+### 构造world.js
 
 保存了每个国家的svg路径和名称对应，[点击查看](https://github.com/ChengYuanjian/chengyuanjian.github.io/blob/master/js/world.js)。
 
-###引入Raphael4GWT
+### 引入Raphael4GWT
 
 `<inherits name="org.sgx.raphael4gwt.GRaphael4Gwt" />`
 
 `<script type="text/javascript" src="js/world.js"></script>`
 
-###使用JSNI构造解析类WorldMapData.java
+### 使用JSNI构造解析类WorldMapData.java
 
 {% highlight java %}
 import com.google.gwt.core.client.JavaScriptObject;
 
 public class WorldMapData {
 	private static String[] countryIds = null;
-	
+
 	public static native String getCountryShape(String countryId)/*-{
 		return $wnd.worldmap.shapes[countryId];
 	}-*/;
-	
+
 	public static String[] getCountryIds(){
 		if(countryIds == null){
 			JavaScriptObject jsIds = getCountryIdsJs();
@@ -48,15 +48,15 @@ public class WorldMapData {
 	public static native String getCountryName(String countryId)/*-{
 		return $wnd.worldmap.names[countryId];
 	}-*/;
-	
+
 	private static native int getArrayLength(JavaScriptObject array) /*-{
 	    return array.length;
 	}-*/;
-	
+
 	private static native String getStringArrayValue(JavaScriptObject obj, int idx) /*-{
 	    return obj[idx];
 	}-*/;
-	
+
 	private static native JavaScriptObject getCountryIdsJs() /*-{
 	    var countries = [];
 	    var i=0;
@@ -65,7 +65,7 @@ public class WorldMapData {
 	    }
 	    return countries;
 	}-*/;
-	
+
 	private static String[] convertToJavaStringArray(JavaScriptObject array) {
         int length = getArrayLength(array);
         String[] arr = new String[length];
@@ -77,7 +77,7 @@ public class WorldMapData {
 }
 {% endhighlight %}
 
-###具体实现
+### 具体实现
 
 *构造底层容器*
 
@@ -99,14 +99,14 @@ Shape drawCountry(Paper paper, String countryId) {
 		return paper.path(shapeData).setAttribute("stroke", COUNTRY_FILL).setAttribute("fill", COUNTRY_FILL)
 				.setAttribute("opacity", 1);
 	}
-	
+
 for (String countryId : WorldMapData.getCountryIds()) {
 			countryShapes.put(countryId, drawCountry(paper, countryId));
 		}
-	
+
 {% endhighlight %}
 
-###添加鼠标事件
+### 添加鼠标事件
 
 *右键单击*
 
@@ -123,7 +123,7 @@ MouseEventListener createRightClickListener() {
 		};
 
 	}
-	
+
 	countryShapes.get("CN").mouseDown(createRightClickListener());//以中国为例
 {% endhighlight %}
 
@@ -134,12 +134,12 @@ MouseEventListener createRightClickListener() {
 countryShapes.get("CN").hover(new HoverListener() {
 			@Override
 			public void hoverOut(NativeEvent e) {
-				
+
 			}
 
 			@Override
 			public void hoverIn(NativeEvent e) {
-							
+
 			}
 		});
 {% endhighlight %}

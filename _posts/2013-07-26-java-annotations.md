@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:          Java编程细节之Annotation
-description: 
+description:
 keywords: Java, Annotation
 category: Java
 tags: [Java,Annotation]
@@ -11,7 +11,7 @@ tags: [Java,Annotation]
 
 <!-- more -->
 
-###注解的作用
+### 注解的作用
 
 大致可分为三类：
 
@@ -23,9 +23,9 @@ tags: [Java,Annotation]
 
 -----------------------
 
-###注解的高级应用
+### 注解的高级应用
 
-####限制注解的使用范围
+#### 限制注解的使用范围
 
 用`@Target`指定ElementType属性
 
@@ -51,7 +51,7 @@ public @interface MyAnnotation{
 }
 {% endhighlight %}
 
-####保持性策略
+#### 保持性策略
 
 用`@Retention`指定RetentionPolicy属性
 
@@ -72,7 +72,7 @@ public @interface MyAnnotation{
 }
 {% endhighlight %}
 
-####文档化功能
+#### 文档化功能
 
 Java提供的Documented元注解跟Javadoc的作用是差不多的，其实它存在的好处是开发人员可以定制Javadoc不支持的文档属性，并在开发中应用。
 
@@ -86,7 +86,7 @@ public @interface MyAnnotation{
 }
 {% endhighlight %}
 
-####标注继承
+#### 标注继承
 
 {% highlight java %}
 //让它允许继承，可作用到子类
@@ -98,9 +98,9 @@ public @interface MyAnnotation{
 
 --------------------------
 
-###自定义注解示例
+### 自定义注解示例
 
-####自定义注解MyAnnotation
+#### 自定义注解MyAnnotation
 
 {% highlight java %}
 @Inherited
@@ -112,15 +112,15 @@ public @interface MyAnnotation{
 }
 {% endhighlight %}
 
-####使用自定义注解
+#### 使用自定义注解
 
 {% highlight java %}
 public class MyClass{
   @MyAnnotation(name="abc",age=10)
   public void function1(String name, int age){// 使用注解并传入参数的方法
     System.out.println(name + "'s age is " + age);
-  } 
-  
+  }
+
   @MyAnnotation
   public void function2(String name, int age){// 使用注解并使用默认参数的方法
     System.out.println(name + "'s age is " + age);
@@ -128,7 +128,7 @@ public class MyClass{
 }
 {% endhighlight %}
 
-####读取注解
+#### 读取注解
 
 **使用反射去读取注解，必须将Retention的值选为Runtime**
 
@@ -142,13 +142,12 @@ Method[] methods=c.getDeclaredMethods();
 for(Method method:methods){
   //获取每个方法上面所声明的所有注解信息
   Annotation[] annotations=method.getDeclaredAnnotations();
-  
+
   //获取指定的注解
   MyAnnotation ann=method.getAnnotation(MyAnnotation.class);
-  
+
   //调用方法
   method.invoke(new MyClass(),ann.name(),ann.age());//使用注解传递的值
-  
+
 }
 {% endhighlight %}
-

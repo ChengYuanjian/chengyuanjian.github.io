@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:         利用ANT生成JUnit、Findbugs、Emma报告
-description: 使用ANT脚本来运行Junit、Findbugs、Emma，并产出报告 
+description: 使用ANT脚本来运行Junit、Findbugs、Emma，并产出报告
 keywords: ANT,JUNIT,FINDBUGS,EMMA
 category: ANT
 tags: [ANT,JUNIT,FINDBUGS,EMMA]
@@ -19,7 +19,7 @@ tags: [ANT,JUNIT,FINDBUGS,EMMA]
 
 <!-- more -->
 
-###准备工作
+### 准备工作
 
 首先自然是下载相关的jar包，下面列出所必需的jar包：
 <pre><code>
@@ -40,7 +40,7 @@ jFormatString.jar
 jsr305.jar
 </code></pre>
 
-###编写ANT脚本
+### 编写ANT脚本
 
 下面列出完整的脚本示例，包括了编译、打包、运行JUnit并生成报表、生成Findbugs报表和Emma代码覆盖率报表：
 

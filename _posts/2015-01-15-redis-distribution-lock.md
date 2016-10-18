@@ -1,24 +1,24 @@
 ---
 layout: post
 title:  Quartz利用Redis分布式锁实现Master-Slave模式
-description: 
+description:
 keywords: Java,Redis,Jedis,Quartz
 category: Java
 tags: [Java,Redis,Jedis,Quartz]
 ---
 
-####背景
+#### 背景
 
 Spring+Quartz可以很方便地实现任务调度，也支持cluster模式，参见[spring整合quartz并持久化](http://haiziwoainixx.iteye.com/blog/1838055)。
 但需要在数据库创建12张表。杀鸡焉用牛刀？对于简单的分布式场景，有没有更好的方式呢？答案是确定的。
 
-####解决方案
+#### 解决方案
 
 利用Redis分布式锁，判断当前任务是否获得锁，如果获得则为master执行任务，否则就是slave候命。
 
 <!-- more -->
 
-####具体步骤
+#### 具体步骤
 
 * 1.设置时间戳
 
@@ -62,7 +62,7 @@ if (System.currentTimeMillis() < Long.parseLong(jedis.get(lockstamp))) {
 		}
 {% endhighlight %}
 
-####完整代码
+#### 完整代码
 
 {% highlight java %}
 public void execute() {
@@ -98,6 +98,6 @@ public void execute() {
 	}
 {% endhighlight %}
 
-####相关文章
+#### 相关文章
 
 [Redis基础 – Jave客户端Jedis](http://chengyuanjian.github.io/java/2014-10/java-redis-jedis.html)

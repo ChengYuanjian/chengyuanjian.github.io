@@ -11,13 +11,13 @@ Eclipse是写Java首选IDE，而ANT做为Java的一种build工具，二者可以
 
 <!-- more -->
 
-####二者编译方式不同
+#### 二者编译方式不同
 
 * ANT编译是通过`javac`节点，调用JDK下的`javac`来实现的。
 
 * Eclipse编译是通过自身集成的JRE实现，但并非直接去调用，而是通过JDTCompilerAdapter进行适配的。
 
-####解决方案
+#### 解决方案
 
 既然已经知道二者编译方式的不同，那就知道解决方案了。能否让ANT也通过JDTCompilerAdapter进行编译？答案是肯定的。
 
@@ -50,7 +50,7 @@ __如果依旧报"org.eclipse.jdt.core.JDTComilerAdapter not found"，则把org.
 
 ---------------------
 
-####其他文章
+#### 其他文章
 
 * [ANT脚本示例教程](http://chengyuanjian.github.io/ant/2014-08/ant-build.html)
 

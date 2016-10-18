@@ -9,10 +9,10 @@ tags: [Git, Command]
 
 Git 是一个很强大的分布式版本管理工具，本文介绍git常用的命令。
 
-###1.Git 版本库的初始化
+### 1.Git 版本库的初始化
 
 * `git clone`：这是一种较为简单的初始化方式，当你已经有一个远程的Git版本库，只需要在本地克隆一份
-例如：`git  clone  git://github.com/someone/some_project.git some_project` 
+例如：`git  clone  git://github.com/someone/some_project.git some_project`
 上面的命令就是将`git://github.com/someone/some_project.git`这个URL地址的远程版本库，完全克隆到本地some_project目录下。
 
 * `git init` 和`git remote`：这种方式稍微复杂一些，当你本地创建了一个工作目录，你可以进入这个目录，使用`git init`命令进行初始化；Git以后就会对该目录下的文件进行版本控制，这时候如果你需要将它放到远程服务器上，可以在远程服务器上创建一个目录，并把可访问的URL记录下来，此时你就可以利用`git remote add`命令来增加一个远程服务器端，
@@ -21,7 +21,7 @@ Git 是一个很强大的分布式版本管理工具，本文介绍git常用的�
 
 <!-- more -->
 
-###2.远程仓库相关命令
+### 2.远程仓库相关命令
 
 * 检出仓库：`$ git clone git://github.com/jquery/jquery.git`
 
@@ -43,7 +43,7 @@ Git 是一个很强大的分布式版本管理工具，本文介绍git常用的�
 
 * `$git push origin test:test` :提交本地test分支作为远程的test分支
 
-###3.分支(branch)操作相关命令
+### 3.分支(branch)操作相关命令
 
 * 查看本地分支：`$ git branch`
 
@@ -61,7 +61,7 @@ Git 是一个很强大的分布式版本管理工具，本文介绍git常用的�
 
 * 创建远程分支(本地分支push到远程)：`$ git push origin [name]`
 
-* 删除远程分支：`$ git push origin :heads/[name]` 或 `$ gitpush origin :[name]` 
+* 删除远程分支：`$ git push origin :heads/[name]` 或 `$ gitpush origin :[name]`
 
 * 创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)
 {% highlight sh %}
@@ -70,7 +70,7 @@ $rm .git/index
 $git clean -fdx
 {% endhighlight %}
 
-###4.tag操作相关命令
+### 4.tag操作相关命令
 
 * 查看：`$ git tag`
 
@@ -90,7 +90,7 @@ $git clean -fdx
 
 * 创建带注释的tag：`$ git tag -a [name] -m 'comments'`
 
-###5.子模块(submodule)相关操作命令
+### 5.子模块(submodule)相关操作命令
 
 * 添加子模块：`$ git submodule add [url] [path]`
 如：`$git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs`
@@ -106,7 +106,7 @@ $git clean -fdx
 4) 手动删除子模块残留的目录
 
 
-###6.忽略一些文件、文件夹不提交
+### 6.忽略一些文件、文件夹不提交
 
 在仓库根目录下创建名称为`.gitignore`的文件，写入不需要的文件夹名或文件，每个元素占一行即可。
 

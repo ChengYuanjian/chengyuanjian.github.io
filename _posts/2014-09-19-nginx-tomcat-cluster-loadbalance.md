@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:         Nginx和Tomcat实现集群和负载均衡
-description: 
+description:
 keywords: Nginx, Tomcat
 category: Java
 tags: [Java, Nginx, Tomcat]
@@ -14,7 +14,7 @@ _本文资料借鉴于网络_
 
 
 
-####反向代理
+#### 反向代理
 
 * 反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。  
 
@@ -22,7 +22,7 @@ _本文资料借鉴于网络_
 
 上次整理了[Apache和Tomcat实现集群和负载均衡](http://chengyuanjian.github.io/java/2014-09/apache-tomcat-cluster-loadbalance.html)的配置，本文简述一下Nginx和Tomcat实现集群和负载均衡。
 
-####负载均衡
+#### 负载均衡
 
 * 负载均衡（Load Balance），其意思就是将负载（工作任务）进行平衡、分摊到多个操作单元上进行执行，例如Web服务器、FTP服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。
 
@@ -30,7 +30,7 @@ F5是操作于OSI网络模型的传输层，Nginx、Apache是基于Http反向代
 
 ----------------------------
 
-####1.准备工作
+#### 1.准备工作
 
 * 下载[Nginx](http://nginx.org/en/download.html)
 
@@ -38,11 +38,11 @@ F5是操作于OSI网络模型的传输层，Nginx、Apache是基于Http反向代
 
 <pre><code>
 http://memcached-session-manager.googlecode.com/files/memcached-session-manager-1.3.0.jar
- 
+
 http://memcached-session-manager.googlecode.com/files/msm-javolution-serializer-jodatime-1.3.0.jar
- 
+
 http://memcached-session-manager.googlecode.com/files/msm-javolution-serializer-cglib-1.3.0.jar
- 
+
 http://spymemcached.googlecode.com/files/memcached-2.4.2.jar
 
 http://memcached-session-manager.googlecode.com/files/javolution-5.4.3.1.jar
@@ -50,21 +50,21 @@ http://memcached-session-manager.googlecode.com/files/javolution-5.4.3.1.jar
 
 __如果tomcat过多不建议session同步，server间相互同步session很耗资源，高并发环境容易引起Session风暴。而且大多数情况下，同一个用户没有必要访问不同的server。__
 
-####2.安装
+#### 2.安装
 
 同Apache一样简单，Windows下载后直接解压即可。如果需要memcached，将上述5个依赖包放到$TOMCAT_HOME/lib目录下。
 
 Linux下载后执行以下命令：
 {% highlight sh %}
-tar -xzvf nginx-1.x.x.tar.gz 
+tar -xzvf nginx-1.x.x.tar.gz
 cd nginx-1.x.x
-./configure 
-make 
+./configure
+make
 make install　
 {% endhighlight %}
 如果是Ubuntu，常用在线安装的方式：`apt-get install nginx`。
 
-####3.配置
+#### 3.配置
 
 * （1）修改<nginx_home>/nginx.conf文件(Linux下修改sites-available/default文件，方式基本雷同)：
 
@@ -86,7 +86,7 @@ pid        logs/nginx.pid;
 events {
     #使用网络IO模型linux建议epoll，FreeBSD建议采用kqueue，window下不指定。
     #use epoll;
-    
+
     #允许最大连接数
     worker_connections  2048;
 }
@@ -106,7 +106,7 @@ http {
     client_header_timeout  3m;
     client_body_timeout    3m;
     send_timeout           3m;
- 
+
     client_header_buffer_size    1k;
     large_client_header_buffers  4 4k;
 
@@ -126,18 +126,18 @@ http {
 
     server {
       listen       80;
-      server_name  localhost; 
+      server_name  localhost;
       charset      utf-8;  
 
-      location / { 
+      location / {
           root   html;  
-          index  index.html index.htm; 
+          index  index.html index.htm;
       	  proxy_connect_timeout   3;
       	  proxy_send_timeout      30;
       	  proxy_read_timeout      30;
           proxy_pass http://tomcat;     #代理上文配置的upstream tomcat
       }
-      
+
       location ~ ^/(WEB-INF)/ {   
           deny all;   
       }   
@@ -145,9 +145,9 @@ http {
       error_page   500 502 503 504  /50x.html;  
       location = /50x.html {  
         root   html;  
-      } 
-      
-            
+      }
+
+
    }
 }
 {% endhighlight %}
@@ -190,10 +190,10 @@ http {
 location ~ \.jsp$ {
         proxy_pass http://localhost:8080;
 }
-		
+
 location ~ \.(html|js|css|png|gif)$ {
 	root /opt/tomcat/webapps/ROOT;   
-	expires 30d; 
+	expires 30d;
 }
 {% endhighlight %}
 

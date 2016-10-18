@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:         关于iBatis多数据源、通配符配置
-description: 
+description:
 keywords: Java, iBatis, MyBatis
 category: Java
 tags: [Java,iBatis,MyBatis]
@@ -11,7 +11,7 @@ iBatis是一个基于Java的持久层框架，2010年这个项目由apache softw
 
 <!-- more -->
 
-####1.iBatis多数据源的支持
+####  1.iBatis多数据源的支持
 
 采用spring的bean注入的方式，可以很方便地支持多数据源。以下两种方式可以在脱离spring实现同样的效果。
 
@@ -67,7 +67,7 @@ sqlMapClient.setUserConnection(connection);
 
 ----------------------------
 
-####2.iBatis通配符配置
+####  2.iBatis通配符配置
 
 一般情况下，我们会把sql按照不同的模块配置在不同的xml里。传统的方式，我们需要不停地修改SqlMapConfig.xml。如果可以支持通配符，那就一劳永逸了。同样，spring提供了这样的配置：
 {% highlight xml %}
@@ -77,11 +77,11 @@ sqlMapClient.setUserConnection(connection);
         <ref bean="datasource" />  
     </property>  
     <property name="configLocation" value="classpath:com/sqlmap/sqlmap-config.xml" >  
-    </property> 
+    </property>
      <property name="mappingLocations">
         <value>classpath:com/cyj/**/*.xml</value>
     </property>
-</bean> 
+</bean>
 {% endhighlight %}
 
 脱离了spring，iBatis自身是不支持通配符的，那我们要做的就是更改`com.ibatis.sqlmap.engine.builder.xml.SqlMapConfigParser`的`addSqlMapNodelets()`方法。以下是iBatis原有代码：
@@ -188,7 +188,7 @@ parser.addNodelet("/sqlMapConfig/sqlMap", new Nodelet() {
 		   vars.errorCtx.setResource(url);
 	       reader = Resources.getUrlAsReader(url);
 	   }else{
-	    throw new SqlMapException("The <sqlMap> element requires either a resource or a url attribute."); 
+	    throw new SqlMapException("The <sqlMap> element requires either a resource or a url attribute.");
 	   }
 	   new SqlMapParser(vars).parse(reader);
   }

@@ -1,13 +1,13 @@
 ---
 layout: post
 title: 很Cool的网站，值得一看
-description: 
+description:
 keywords: website
 category: Other
 tags: [website]
 ---
 
-###1.IT类
+### 1.IT类
 
 * [BitBucket](https://bitbucket.org/)：BitBucket是一家源代码托管网站，采用Mercurial和Git作为分布式版本控制系统，同时提供商业计划和免费账户。
 
@@ -31,7 +31,7 @@ tags: [website]
 
 <!-- more -->
 
-* [Html Color Codes](http://html-color-codes.info/)：HTML Color Codes website provides free color tools for finding HTML colors for your website. 
+* [Html Color Codes](http://html-color-codes.info/)：HTML Color Codes website provides free color tools for finding HTML colors for your website.
 
 * [IBM 中文文档库](https://www.ibm.com/developerworks/cn/views/global/libraryview.jsp)：IBM官方，覆盖很广的中文文档库。
 
@@ -63,7 +63,7 @@ tags: [website]
 
 -----------------------------------------
 
-###2.综合类
+### 2.综合类
 
 * [36氪](http://www.36kr.com)：中国最具影响力的互联网创业服务提供商，专注于为互联网创业者和从业者提供媒体资讯、投融资、人才招聘、数据库、大型展会等服务。
 
@@ -96,5 +96,3 @@ tags: [website]
 * [瘾科技](http://cn.engadget.com)：Engadget 中国版。
 
 * [知乎](http://www.zhihu.com)：知乎是一个真实的网络问答社区，社区氛围友好、理性、认真，连接各行各业的精英。他们分享着彼此的专业知识、经验和见解，为中文互联网源源不断地提供高质量的信息。
-
-

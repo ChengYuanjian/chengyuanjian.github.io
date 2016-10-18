@@ -9,7 +9,7 @@ tags: [GWT,Java]
 
 使用GWT原生组件来生成多级菜单的具体实例，基于递归。
 
-###构造数据源
+### 构造数据源
 
 本实例数据源采用List<AppHierarchy>的形式，XML、Json也可，只需要根据数据结构修改解析方法`findChildren`即可。
 
@@ -24,14 +24,14 @@ public class AppHierarchy implements java.io.Serializable {
 	public String mIconFile;//图标路径
 	public String mAppId;//父菜单id
 	public String mParentAppId;//当前菜单id
-	
+
 	//setter,getter略过
-	
+
 }
 {% endhighlight %}
 
 
-###根据菜单id查询所有子菜单集合
+### 根据菜单id查询所有子菜单集合
 
 {% highlight java %}
 private List<AppHierarchy> findChildren(String parentId, List<AppHierarchy> all) {
@@ -45,7 +45,7 @@ private List<AppHierarchy> findChildren(String parentId, List<AppHierarchy> all)
 }
 {% endhighlight %}
 
-###根据数据源构造菜单
+### 根据数据源构造菜单
 
 {% highlight java %}
 public static final String SEPARATOR = "SEPARATOR";//分割线
@@ -75,10 +75,10 @@ private void createMenu(AppHierarchy parent, List<AppHierarchy> all, MenuItem pa
 			parentItem.setSubMenu(menu);
 		}
 	}
-	
+
 {% endhighlight %}
 
-###添加点击菜单触发事件处理
+### 添加点击菜单触发事件处理
 
 {% highlight java %}
 private ScheduledCommand createMenuCommand(final AppHierarchy parentApp, final AppHierarchy app) {
@@ -92,7 +92,7 @@ private ScheduledCommand createMenuCommand(final AppHierarchy parentApp, final A
 	}
 {% endhighlight %}
 
-###调用方法生成菜单
+### 调用方法生成菜单
 
 {% highlight java %}
 MenuBar mBar = new MenuBar(true);
@@ -105,4 +105,3 @@ List<AppHierarchy> datas;//此处数据源可自由构造
 createMenu(null, datas, rootItem);
 
 {% endhighlight %}
-

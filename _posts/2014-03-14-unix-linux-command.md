@@ -7,7 +7,7 @@ category: Unix
 tags: [Unix,Linux,Shell]
 ---
 
-###文件命令
+### 文件命令
 
 * `ls` - 列出目录
 * `ls -al` - 使用格式化列出隐藏文件
@@ -38,7 +38,7 @@ tags: [Unix,Linux,Shell]
 *加`-f`表示从后10行开始查看file的内容*
 
 
-###进程管理
+### 进程管理
 
 * `ps` - 显示当前的活动进程
 
@@ -52,7 +52,7 @@ tags: [Unix,Linux,Shell]
 * `fg` - 将最近的作业带到前台
 * `fg n` - 将作业n带到前台
 
-###文件操作
+### 文件操作
 
 * `chmod octal file` - 更改file的权限
 
@@ -69,13 +69,13 @@ tags: [Unix,Linux,Shell]
 * `diff [-r] name1 name2` - 比较文件或目录之内容, name1 name2可同时为文件名，或目录名称
 
 
-###SSH
+### SSH
 
 * `ssh usr@host` - 以usr用户身份连接到host
 * `ssh -p port user@host` - 在端口prot以user用户身份连接到host
 
 
-###搜索
+### 搜索
 * `grep pattern file` - 搜索file中匹配pattern的内容
 * `grep -r pattern dir` - 递归搜索dir目录中匹配pattern的内容
 * `command | grep pattern` - 搜索command命令输出中匹配pattern的内容
@@ -88,7 +88,7 @@ tags: [Unix,Linux,Shell]
 *加`-name`为按文件名搜索*
 
 
-###系统信息
+### 系统信息
 
 * `date` - 显示当前日期和时间
 * `cal` - 显示当月的日历
@@ -104,7 +104,7 @@ tags: [Unix,Linux,Shell]
 * `du` - 显示目录空间占用情况
 * `free` - 显示内存及交换区占用情况
 
-###压缩/解压
+### 压缩/解压
 
 * `tar cf file.tar files` - 创建包含files的tar文件file.tar
 * `tar xf file.tar` - 从file.tar提取文件
@@ -114,7 +114,7 @@ tags: [Unix,Linux,Shell]
 * `gzip file` - 压缩file并重命名为file.gz
 * `gzip -d file.gz` - 将file.gz解压为file
 
-###网络
+### 网络
 
 * `ping host` - ping host并输出结果
 * `whois domain` - 获取domain的whois信息
@@ -123,16 +123,16 @@ tags: [Unix,Linux,Shell]
 * `wget file` - 下载file
 * `wget -c file` - 断点续传
 
-###文件传输
+### 文件传输
 
 * `rcp [-r] source hostname:destination` - 拷贝文件或目录至远端工作站
 
 示例：
-    `rcp -r dir1 doc:/home/user` - 将目录dir1，拷贝到工作站doc路径/home/user之目录下 
+    `rcp -r dir1 doc:/home/user` - 将目录dir1，拷贝到工作站doc路径/home/user之目录下
 
 * `rcp [-r] hostname:source destination` - 自远端工作站，拷贝文件或目录
 
-###快捷键
+### 快捷键
 
 * `Ctrl+C` - 停止当前命令
 * `Ctrl+Z` - 停止当前命令，并使用fg恢复
@@ -140,5 +140,3 @@ tags: [Unix,Linux,Shell]
 * `Ctrl+W` - 删除当前行中的字
 * `Ctrl+U` - 删除整行
 * `!!` - 重复上次命令
-
-

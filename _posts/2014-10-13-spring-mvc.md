@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Spring MVC
-description: 
+description:
 keywords: Spring,MVC
 category: Spring
 tags: [Spring,MVC]
@@ -21,7 +21,7 @@ tags: [Spring,MVC]
 
 ---------------------
 
-####Spring MVC是什么
+#### Spring MVC是什么
 
 首先要理解Spring MVC，它是基于Java的实现了Web MVC设计模式的请求驱动类型的轻量级Web框架，类似Struts。
 
@@ -31,7 +31,7 @@ tags: [Spring,MVC]
 
 * 页面控制器/处理器为Controller接口的实现，也可以是任何的POJO类
 
-####核心流程
+#### 核心流程
 
 * 1.客户端发送请求，DispatcherServlet作为统一访问点，进行全局的流程控制
 
@@ -49,7 +49,7 @@ tags: [Spring,MVC]
 
 ---------------------------
 
-####一.前端控制器DispatcherServlet配置
+#### 一.前端控制器DispatcherServlet配置
 
 其本质就是一个Servlet，在web.xml中配置：
 
@@ -72,7 +72,7 @@ tags: [Spring,MVC]
 
 DispatcherServlet会默认加载WEB-INF/[DispatcherServlet的Servlet名字]-servlet.xml配置文件，这里会加载springmvc-servlet.xml。
 
-#####url-pattern配置小结
+##### url-pattern配置小结
 
 <pre><code>
 配置servlet的<url-pattern>时，容器会首先查找完全匹配，再查找目录匹配，最后查找扩展名匹配。 如果一个请求匹配多个“目录匹配”，容器会选择最长的匹配。
@@ -84,17 +84,17 @@ DispatcherServlet会默认加载WEB-INF/[DispatcherServlet的Servlet名字]-serv
 
 使用Spring构造restful url，通常会配置为`/`，但这种方式也会把js、jpg、css等静态资源拦截住，导致页面无法加载这些资源。这里有三种解决方案(推荐第二种)：
 
-* 1.使用mvc:default-servlet-handler 
+* 1.使用mvc:default-servlet-handler
 
 它会把url注册到SimpleUrlHandlerMapping的urlMap中,把对静态资源的访问由HandlerMapping转到`org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler`处理。DefaultServletHttpRequestHandler使用就是各个Servlet容器自己的默认Servlet。
 
-* 2.使用mvc:resources 
+* 2.使用mvc:resources
 
-{% highlight xml %}
+```xml
 <mvc:resources mapping="/images/**" location="/images/" />  
-{% endhighlight %}
+```
 
-/images/**映射到ResourceHttpRequestHandler进行处理，location指定静态资源的位置。
+`/images/**`映射到ResourceHttpRequestHandler进行处理，location指定静态资源的位置。
 
 * 3.在DispatcherServlet之前，让容器default的Servlet先拦截
 
@@ -109,7 +109,7 @@ DispatcherServlet会默认加载WEB-INF/[DispatcherServlet的Servlet名字]-serv
 </servlet-mapping>  
 {% endhighlight %}
 
-#####常见容器默认Servlet名字：
+##### 常见容器默认Servlet名字：
 
 <pre><code>
 Tomcat, Jetty, JBoss, GlassFish：default
@@ -124,7 +124,7 @@ WebSphere：SimpleFileServlet
 <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
-   
+
 <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:config/applicationContext.xml</param-value>
@@ -135,7 +135,7 @@ __与DispatcherServlet不同的是,DispatcherServlet可以同时配置多个，�
 
 ----------------------
 
-####二.配置HandlerMapping、HandlerAdapter、HandlerInterceptor 
+#### 二.配置HandlerMapping、HandlerAdapter、HandlerInterceptor
 
 {% highlight xml %}
 <!-- HandlerMapping，可以配置多个interceptor -->
@@ -148,12 +148,12 @@ __与DispatcherServlet不同的是,DispatcherServlet可以同时配置多个，�
 </bean>
 
 <!-- HandlerAdapter -->
-<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/> 
+<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
 {% endhighlight %}
 
 `<mvc:annotation-driven />`是一种简写形式，自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter，即与上述配置等价，但自此就无法指定Interceptor了。
 
-#####HandlerMapping接口常用实现类： 
+##### HandlerMapping接口常用实现类：
 
 * BeanNameUrlHandlerMapping：表示将请求的URL和Bean名字映射，如URL为 “context/cyj”，则Spring配置文件必须有一个名字为“/cyj”的Bean。
 
@@ -163,29 +163,29 @@ __与DispatcherServlet不同的是,DispatcherServlet可以同时配置多个，�
 
 __多个HandlerMapping的执行顺序问题，order值比较小的会优先执行__
 
-* DefaultAnnotationHandlerMapping的order属性值是：0 
+* DefaultAnnotationHandlerMapping的order属性值是：0
 
-* `<mvc:resources/>`自动注册的 SimpleUrlHandlerMapping的order属性值是：2147483646 
+* `<mvc:resources/>`自动注册的 SimpleUrlHandlerMapping的order属性值是：2147483646
 
-* `<mvc:default-servlet-handler/>`自动注册的SimpleUrlHandlerMapping的order属性值是：2147483647 
+* `<mvc:default-servlet-handler/>`自动注册的SimpleUrlHandlerMapping的order属性值是：2147483647
 
 
-#####HandlerAdapter接口常用实现类：
+##### HandlerAdapter接口常用实现类：
 
 * SimpleControllerHandlerAdapter：表示所有实现了org.springframework.web.servlet.mvc.Controller接口的Bean可以作为Spring Web MVC中的处理器。
 
 * AnnotationMethodHandlerAdapter(3.0)/RequestMappingHandlerAdapter(3.1)：通过注解，把一个URL映射到Controller类的方法上。
 
-#####HandlerInterceptor：一般我们会使用抽象类`org.springframework.web.servlet.handler.HandlerInterceptorAdapter`
+##### HandlerInterceptor：一般我们会使用抽象类`org.springframework.web.servlet.handler.HandlerInterceptorAdapter`
 
 HandlerInterceptor是一个接口，一般需要自己扩展该接口，除了指定给HandlerMapping外，还可以全局配置：
 {% highlight xml %}
-<!-- 全局配置1  --> 
+<!-- 全局配置1  -->
 <mvc:interceptors>  
     <bean class="com.mvc.MyInteceptor" />  
 </mvc:interceptors>  
 
-<!-- 全局配置2，拦截匹配的URL  --> 
+<!-- 全局配置2，拦截匹配的URL  -->
 <mvc:interceptors >    
   <mvc:interceptor>    
       <mvc:mapping path="/cyj/*" />    
@@ -198,7 +198,7 @@ HandlerInterceptor是一个接口，一般需要自己扩展该接口，除了�
 
 -----------------------
 
-####三.配置ViewResolver
+#### 三.配置ViewResolver
 
 {% highlight xml %}
 <!-- ViewResolver -->
@@ -212,20 +212,20 @@ HandlerInterceptor是一个接口，一般需要自己扩展该接口，除了�
 viewClass：JstlView表示JSP模板页面需要使用JSTL标签库
 prefix和suffix：查找视图页面的前缀和后缀，如果逻辑视图名为cyj，则该jsp视图页面应该存放在“WEB-INF/jsp/cyj.jsp”
 
-#####常用实现类
+##### 常用实现类
 
-* UrlBasedViewResolver：通过配置文件，把一个视图名交给到一个View来处理 
+* UrlBasedViewResolver：通过配置文件，把一个视图名交给到一个View来处理
 
-* InternalResourceViewResolver：加入了JSTL的支持 
+* InternalResourceViewResolver：加入了JSTL的支持
 
 ---------------------
 
-####四.处理器/页面控制器Controller
+#### 四.处理器/页面控制器Controller
 
 在2.5之前，通过实现`org.springframework.web.servlet.mvc.Controller`接口定义处理器类。2.5引入注解式处理器支持，通过`@Controller`和 `@RequestMapping`注解定义处理器类（需要注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter）。
 {% highlight java %}
 /*响应http://host:port/context/user/cyj1或者cyj2请求*/
-@Controller 
+@Controller
 @RequestMapping(value="/user")         
 public class MyController {
     @RequestMapping(value = {"/cyj1","cyj2"}) //可配置多个映射                 
@@ -242,13 +242,13 @@ public class MyController {
 
 --------------------
 
-####五.视图页面
+#### 五.视图页面
 
 一般为使用JSTL标签库的jsp页面，不赘述。
 
-####六.其他
+#### 六.其他
 
-#####1.中文乱码解决方案
+#### #1.中文乱码解决方案
 
 {% highlight xml %}
 <filter>
@@ -265,13 +265,13 @@ public class MyController {
 </filter-mapping>
 {% endhighlight %}
 
-#####2.自动检测组件
+##### 2.自动检测组件
 
 {% highlight xml %}
 <context:component-scan base-package="com.cyj.controller"/>
 {% endhighlight %}
 
-#####3.国际化
+##### 3.国际化
 
 {% highlight xml %}
 <bean id="messageSource"
@@ -300,7 +300,7 @@ Spring会自动搜索message.properties、message\_zh\_CN.properties等国际化
 
 ------------------------
 
-####参考文档
+#### 参考文档
 
 [Spring官方在线文档库](http://docs.spring.io/spring/docs/)
 [Spring MVC 教程](http://elf8848.iteye.com/blog/875830/)

@@ -1,13 +1,13 @@
 ---
 layout: post
 title: 程序员那点儿破事儿
-description: 
+description:
 keywords: programmer
 category: Other
 tags: [programmer,Python]
 ---
 
-###去死吧！你这个异教徒！ 
+### 去死吧！你这个异教徒！
 
 <pre><code>一天我路过一座桥，碰巧看见一个人想跳河自杀。我跑过去对他大喊道：“别跳，别死啊。”
 “为什么不让我跳？”他说。
@@ -38,7 +38,7 @@ tags: [programmer,Python]
 
 “你们这些用python的，应该被钉在十字架上烧死。”
 
-###程序员和禅师
+### 程序员和禅师
 
 <pre><code>
 程序员问禅师：我总是和我的同事们合不来，他们使用 Java，我使用 PHP。
@@ -52,7 +52,7 @@ tags: [programmer,Python]
 禅师沉吟片刻，摆出架式，双手合十：你们应该使用 Python 语言。
 </code></pre>
 
-###为何？
+### 为何？
 
 作为一个接触java七年有余的IT Farmer来说，看到Python第一印象会是...
 
@@ -66,7 +66,7 @@ tags: [programmer,Python]
 
 随意看看几个小例子，对比对比吧。
 
-####交换变量
+#### 交换变量
 
 * Java
 
@@ -82,7 +82,7 @@ b = temp
 b, a = a, b
 {% endhighlight %}
 
-####倒序
+#### 倒序
 
 * Java
 
@@ -104,7 +104,7 @@ str[::-1]
 {% endhighlight %}
 
 
-####文件读写
+#### 文件读写
 
 * Java
 
@@ -154,5 +154,3 @@ f.close()
 
 当然，并非Python全面领先Java，Java依旧是企业应用中的王者，快速开发中小型应用，Python真心好用很多。光变量声明不需要指定类型和不需要加`;`，已经让我觉得很赞了。
 我的建议是，除了Java\C++之外，至少掌握一门Python、Ruby，自己选吧。
-
-
