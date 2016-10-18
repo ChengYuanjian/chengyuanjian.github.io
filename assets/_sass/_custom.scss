@@ -1,0 +1,30 @@
+/* define your color & font-family & font-size */
+
+/* font color */
+$base01: red;
+$base02: fuchsia;
+$base03: #145b7d;
+$base04: chocolate;
+$base05: #7bbfea;
+$base06: moccasin;
+$base07: white;
+$base08: black;
+
+$alpha: 1/6;
+
+/* font-size */
+$font-size: 16px;
+$line-height: 1;
+
+/* font-family */
+@mixin sans-serif {
+  font-family: "PingFang SC", Tahoma, "Microsoft Yahei", sans-serif;
+}
+
+@mixin serif {
+  font-family: serif;
+}
+
+@mixin monospace {
+  font-family: Monaco, "Dejavu Sans Mono", Consolas, Terminal, monospace;
+}
