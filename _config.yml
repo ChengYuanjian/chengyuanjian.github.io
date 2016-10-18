@@ -4,12 +4,12 @@ url: "//chengyuanjian.github.io"
 paginate: 5
 author:
     name: CYJ
-    github:
-    email:
+    github: https://github.com/ChengYuanjian
+    email: cyjcheng@gmail.com
     gitcafe:
-    twitter:
+    twitter: https://twitter.com/_Aegwynn
     facebook:
-    googleplus:
+    googleplus: cyjcheng@gmail.com
     weibo:
 atom_path: /atom.xml
 rss_path: /rss.xml
