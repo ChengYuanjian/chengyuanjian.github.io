@@ -15,6 +15,8 @@ tags: [Redis]
 * 使用PERSIST可以清除过期时间
 * 使用rename只能改变key，但无法清除过期时间
 
+<!-- more -->
+
 ### Redis过期键删除策略
 
 Redis key过期的方式有三种：
