@@ -120,7 +120,7 @@ hr {
   }
   .title {
     color: lighten($base03, 10%);
-    border-bottom: 2px dashed lighten($base03, 10%);
+    border-bottom: 2px solid lighten($base03, 10%);
     a {
       padding-right: 8px;
       color: lighten($base03, 10%);
