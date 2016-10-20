@@ -4,7 +4,7 @@ title:  CloudFoundry日志分析——firehose＋rsyslog＋kafka＋storm
 description:
 keywords: CloudFoundry,PaaS,kafka,storm
 category: CloudFoundry
-tags: [CloudFoundry,PaaS]
+tags: [CloudFoundry,PaaS,Kafka,Storm,Rsyslog]
 ---
 
 
