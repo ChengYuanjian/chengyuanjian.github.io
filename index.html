@@ -11,14 +11,14 @@ layout: default
   {% endif %}
   
   <div class="col-md-10 meta visible-lg visible-md">
-      <span class="glyphicon glyphicon-tags"></span> {% if post.tags %}{% for tag in post.tags %}<a href="/tags.html#{{ tag }}-ref" title="{{ tag }}"><p>{{ tag }}</p></a>{% endfor %}{% endif %}
-    </div>
-    {% if post.content contains "<!-- more -->" %}
+  </div>
+    
   <div class="col-md-2">
+    {% if post.content contains "<!-- more -->" %}
     <a class="btn btn-primary btn-sm" href="{{ post.url }}"><span class="readmore">Read More &raquo; </span></a>
-    {% endif %}   
-     <div class="clearfix"></div>
-   </div>
+    {% endif %} 
+  </div>
+</div>
  
   {% endfor %}
 
