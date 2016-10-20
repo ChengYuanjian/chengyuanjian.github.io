@@ -10,11 +10,9 @@ layout: default
   {{ post.content | strip_html | truncate:50 }}
   {% endif %}
   
-  <div>  
     {% if post.content contains "<!-- more -->" %}
     <a class="btn btn-primary btn-sm" href="{{ post.url }}"><span class="readmore">Read More &raquo; </span></a>
     {% endif %} 
-  </div>
 </div>
  
   {% endfor %}
