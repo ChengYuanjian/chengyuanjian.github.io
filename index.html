@@ -9,16 +9,16 @@ layout: default
   {% else %}
   {{ post.content | strip_html | truncate:50 }}
   {% endif %}
-  <div>
+  <div class="status">
     <div class="col-md-10">
     {% if post.tags %}{% for tag in post.tags %}<a href="/tags.html#{{ tag }}" title="{{ tag }}"><p class="small">{{ tag }}</p></a>{% endfor %}{% endif %}
     </div>
       {% if post.content contains "<!-- more -->" %}
-      <div class="col-md-2">
+    <div class="col-md-2">
     <a class="btn btn-primary btn-sm pull-right" href="{{ post.url }}"><span class="readmore">Read More &raquo; </span></a>
     {% endif %}
-      </div>
     </div>
+   </div>
   {% endfor %}
 
   <!-- Pagination links -->
