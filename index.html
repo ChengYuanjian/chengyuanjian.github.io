@@ -11,9 +11,8 @@ layout: default
   {% endif %}
   
     {% if post.content contains "<!-- more -->" %}
-    <a class="btn btn-primary btn-sm" href="{{ post.url }}"><span class="readmore">Read More &raquo; </span></a>
+    <a class="btn btn-primary btn-sm pull-right" href="{{ post.url }}"><span class="readmore">Read More &raquo; </span></a>
     {% endif %} 
-</div>
  
   {% endfor %}
 
