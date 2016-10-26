@@ -22,7 +22,8 @@ Cloud Foundry是VMware推出的业界第一个开源PaaS云平台，它支持多
 
 ### Cloud Foundry核心组件
 
-Cloud Foundry是由多个相对独立的模块构成的分布式系统，每个模块单独存在和运行，各模块之间通过消息机制进行通信。Cloud Foundry各模块本身是基于Ruby语言开发的，每个部分可以认为拿来即可运行，不存在编译等过程。
+Cloud Foundry是由多个相对独立的模块构成的分布式系统，每个模块单独存在和运行，各模块之间通过消息机制进行通信。Cloud Foundry各模块本身是基于Ruby语言开发的，每个部分可以认为拿来即可运行，不存在编译等过程。官方的架构图如下：
+![CloudFoundry架构图](../assets/images/post/cf-arche.jpg)
 
 #### Router
 
