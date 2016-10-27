@@ -17,4 +17,4 @@ description:
 
 Google粉、暴雪粉，技能以Java为主，此外熟悉Golang、Python、JavaScript。热衷前沿资讯，酷爱暴雪游戏；性格沉稳，诚信踏实，不拘小节！
 
-{% include comments.html %}
+写代码和古代练拳一样，三天不写手生。本博用作记录日常知识点，再好的记性也不如一根烂笔头！
