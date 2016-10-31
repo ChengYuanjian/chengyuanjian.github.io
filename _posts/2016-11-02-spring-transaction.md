@@ -194,11 +194,11 @@ PlatformTransactionManager是一个接口，通常使用其实现类DataSourceTr
      class="org.springframework.orm.hibernate3.HibernateTransactionManager">
       <property name="sessionFactory" ref="sessionFactory" />
  </bean>
- ```
+```
  
- 此时在DAO上需加上@Transactional注解:
+ 此时在DAO上需加上`@Transactional`注解:
  
- ```java
+```java
 @Transactional
 @Component("userDao")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
@@ -207,4 +207,4 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
         return this.getSession().createQuery("from User").list();
     }  
 }
- ```
+```
