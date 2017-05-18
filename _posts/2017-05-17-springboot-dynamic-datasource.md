@@ -263,7 +263,7 @@ public class App {
 在service中加入注解，指明该方法用哪个数据源；如果不加注解，则使用默认数据源，即spring标准配置的数据源。
 
 {% highlight java %}
- @TargetDataSource(name="wind")
+ @TargetDataSource(name="ds1")
  public List<Map> getSample(){
      return sampleMapper.getSample();
  }
