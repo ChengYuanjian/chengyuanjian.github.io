@@ -7,7 +7,7 @@ category: Apple
 tags: [Apple,Mac OS]
 ---
 
-“工欲善其事，必先利其器”————本文汇总了个人觉得非常好用_免费_的工具。由于众口难调，仅一家之言，见仁见智。
+“工欲善其事，必先利其器”————本文汇总了个人觉得非常好用免费的工具。由于众口难调，仅一家之言，见仁见智。
 
 * [iterm2](http://www.iterm2.com/)：iterm2是Mac下最好用的终端工具，开源免费。
 
@@ -34,3 +34,5 @@ tags: [Apple,Mac OS]
 * [CheatSheet](https://www.cheatsheetapp.com/CheatSheet/)：只需长按住 ⌘-command 键就可以显示当前程序的快捷键列表，再也不用担心记不住快捷键了。
 
 * [Spectacle](https://www.spectacleapp.com/)：窗口管理快捷键程序,为当前窗口居中全屏上下左右半屏四分之一屏等等设定快捷键。多屏利器啊！
+
+* [WineSkin](http://wineskin.urgesoftware.com/tiki-index.php?page=Downloads)：能在Mac OS系统下运行Windows软件和游戏的工具。
