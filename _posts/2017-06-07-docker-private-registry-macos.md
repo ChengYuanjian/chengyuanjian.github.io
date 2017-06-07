@@ -100,3 +100,4 @@ docker pull 192.168.99.100:5000/hello-world
 {% highlight sh %}
 docker images
 {% endhighlight %}
+完毕。
