@@ -9,12 +9,14 @@ tags: [Docker,Mac OS]
 
 Docker的私有仓库类似maven的私服，一般用于公司或个人搭建一个类似docker hub的环境，这样上传、下载镜像速度较快，自由度也较高。本文以Mac为例，阐述如何搭建Docker私有仓库。
 
-<!-- more -->
 
 ### 1.安装docker
 
 Docker官方已经支持Mac和Windows，下载地址：https://www.docker.com/docker-mac
+
 具体安装过程：https://github.com/widuu/chinese_docker/blob/master/installation/mac.md （非常详细，这里不赘述了）
+
+<!-- more -->
 
 ### 2.开始搭建
 
