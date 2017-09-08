@@ -25,6 +25,8 @@ tags: [Apple,Mac OS]
 
 * [MWeb](http://zh.mweb.im/)：国人开发的markdown编辑器，lite版本为免费版。
 
+* [Typora](https://www.typora.io/)：极致简洁的markdown编辑器，目前是beta版免费的。
+
 * [Unarchiver](http://unarchiver.c3.cx/)：看名字就知道，解压缩工具。
 
 * [Postman](https://www.getpostman.com/)： 功能强大的 Web API & HTTP 请求调试。它能够发送任何类型的HTTP 请求 (GET, HEAD, POST, PUT...)，附带任何数量的参数和headers。
