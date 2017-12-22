@@ -21,14 +21,12 @@ tags: [Java,Android]
 #### 反编译过程
 
 ##### 1.反编译apk
-
 {% highlight sh %} 
 sudo apktool d cyj.apk
 {% endhighlight %}
 则在当前目录会生成名为`cyj`的文件夹，存放的是反编译后的内容
 
 ##### 2.反编译源代码
-
 {% highlight sh %} 
 unzip cyj.apk -d src #获取dex文件
 sh d2j-dex2jar.sh ../src/classes.dex #将dex文件转为jar
@@ -40,18 +38,15 @@ sh d2j-dex2jar.sh ../src/classes.dex #将dex文件转为jar
 
 ##### 4.修改smali文件
 
-第三步可以修改java代码来实现hack的效果，但本人更推荐修改smali文件。因为反编译后的java代码跟原始结构还是会存在一些差异。smali文件存放在`cyj/smali`下面，和class文件基本是一一
-对应的。可以互相对比来理解代码逻辑。
+第三步可以修改java代码来实现hack的效果，但本人更推荐修改smali文件。因为反编译后的java代码跟原始结构还是会存在一些差异。smali文件存放在`cyj/smali`下面，和class文件基本是一一对应的。可以互相对比来理解代码逻辑。
 
 ##### 5.回编译
-
 {% highlight sh %} 
 sudo apktool b cyj
 {% endhighlight %}
 则会在`cyj/dist`下生成新的apk，但此时还不可使用
 
 ##### 5.加签名
-
 {% highlight sh %} 
 keytool -genkeypair -alias "cheng" -keyalg "RSA" -keystore "cheng.keystore" #生成keystore
 sudo jarsigner -verbose -keystore cheng.keystore -signedjar cyj_signed.apk cyj.apk cheng #加签名
