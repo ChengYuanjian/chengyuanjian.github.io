@@ -41,6 +41,8 @@ sh d2j-dex2jar.sh ../src/classes.dex #将dex文件转为jar
 第三步可以修改java代码来实现hack的效果，但本人更推荐修改smali文件。因为反编译后的java代码跟原始结构还是会存在一些差异。smali文件存放在`cyj/smali`下面，和class文件基本是一一对应的。可以互相对比来理解代码逻辑。
 
 ##### 5.回编译
+
+修改smali文件之后，需还原成apk
 {% highlight sh %} 
 sudo apktool b cyj
 {% endhighlight %}
