@@ -51,6 +51,6 @@ sudo apktool b cyj
 ##### 5.加签名
 {% highlight sh %} 
 keytool -genkeypair -alias "cheng" -keyalg "RSA" -keystore "cheng.keystore" #生成keystore
-sudo jarsigner -verbose -keystore cheng.keystore -signedjar cyj_signed.apk cyj.apk cheng #加签名
+sudo jarsigner  -sigalg SHA1withRSA -digestalg SHA1 -verbose -keystore cheng.keystore -signedjar cyj_signed.apk cyj.apk cheng #加签名
 {% endhighlight %}
 最终生成的`cyj_signed.apk`就是hack后的apk了。
